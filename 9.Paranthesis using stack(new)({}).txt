@@ -1,0 +1,88 @@
+#include<iostream>
+
+using namespace std;
+class xyz{
+  int top;
+  char s[25];
+  public:
+  xyz(){
+    top=-1;
+  }
+  void push(char c){
+    if(top==25){
+      cout<<"\nStack overflow!";
+    }else{
+      top++;
+      s[top]=c;
+    }
+  }
+  void pop(){
+    if(top==-1){
+      cout<<"\nStack is empty!";
+    }else{
+      top--;
+    }
+  }
+  bool isempty(){
+    if(top==-1){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  char first(){
+    if(top!=-1){
+      return s[top];
+    }
+  }
+};
+bool check(string brac){
+  xyz stack;
+  bool ans=true;
+  for(int i=0;brac[i]!='\0';i++){
+    if(brac[i]=='(' || brac[i]=='[' || brac[i]=='{'){
+     stack.push(brac[i]);
+    }
+    else if(brac[i]==')'){
+      if(!stack.isempty() && stack.first()=='('){
+        stack.pop();
+      }
+      else{
+        ans=false;
+      }
+    }
+     else if(!stack.isempty() && brac[i]==']'){
+      if(stack.first()=='['){
+        stack.pop();
+      }
+      else{
+        ans=false;
+      }
+    }
+     else if(!stack.isempty() &&brac[i]=='}'){
+      if(stack.first()=='{'){
+        stack.pop();
+      }
+      else{
+        ans=false;
+      }
+    }
+  }
+  if(!stack.isempty()){
+    ans=false;
+  }
+  return ans;
+}
+
+int main(){
+ string bracket;
+ cout<<"Enter the string:";
+ cin>>bracket;
+ if(check(bracket)){
+  cout<<"\nValid string!";
+ }else{
+  cout<<"\nInvalid string!";
+ }
+  return 0;
+}
