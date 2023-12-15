@@ -1,0 +1,80 @@
+#include<iostream>
+
+using namespace std;
+struct queue{
+  int f=-1;
+  int r=-1;
+  int q[5];
+};
+ class pizza{
+  struct queue temp;
+  int id;
+  public:
+ void order(){
+  if(temp.f==(temp.r+1)%5){
+   cout<<"\nOrder list is full!";
+  }
+  else if(temp.f==-1 && temp.r==4){
+     cout<<"\nOrder list is full!";
+  }else{
+     temp.r=(temp.r+1)%5;
+    cout<<"\nEnter pizza id:";
+    cin>>id;
+    temp.q[temp.r]=id;
+  }
+ }
+ void display(){
+    if(temp.f==temp.r){
+     cout<<"No orders in order list!";
+    }
+    else{
+      cout<<"\nOrders remaning:";
+      for(int i=temp.f+1;i!=(temp.r+1)%5;i=(i+1)%5){
+        cout<<"\nID:"<<temp.q[i];
+      }
+    }
+  }
+  void serve(){
+    if(temp.f==temp.r){
+      cout<<"No orders in order list!";
+    }
+    else{
+      temp.f=(temp.f+1)%5;
+      cout<<"pizza served to:"<<temp.q[temp.f];
+    }
+  }
+ };
+
+
+int main(){
+  pizza obj1;
+  int flag=0,c;
+  while(flag==0){
+   cout<<"\n__________________________________________________________\n";
+   cout<<"\t\tMENUE";
+   cout<<"\n__________________________________________________________\n";
+   cout<<"\n1.Order";
+   cout<<"\n2.Display";
+   cout<<"\n3.Serve";
+   cout<<"\n4.Exit";
+   cout<<"\nEnter your choice:";
+   cin>>c;
+   switch(c){
+    case 1:
+    obj1.order();
+    break;
+    case 2:
+    obj1.display();
+    break;
+    case 3:
+    obj1.serve();
+    break;
+    case 4:
+    flag=1;
+    break;
+    default:
+    cout<<"Invalid choice!";
+   }
+  }cout<<"Program ended here!";
+  return 0;
+}

@@ -1,0 +1,65 @@
+Str= "Fundamental of Data Structure"
+def long_len():
+    str_list=[]
+    long_len=[]
+    str_list=Str.split(" ")
+    for i in str_list:
+        long_len.append(len(i))
+    long_len.sort(reverse=True)
+    print("Word is =",str_list[0])
+    print(max(long_len))
+
+def freq_char():
+    c=input("Enter character for finding its frequency in the string")
+    print("C=",c)
+    g=Str.count(c)
+    print(g)
+
+def str_pali():
+    Str=input("Enter string for checking palindromex")
+    M=Str[::-1]
+    print(M)
+    if Str==M:
+        print("String is palindrome")
+    else:
+        print("String is not palindrome")
+
+def index_substr():
+    print("Enter character for finding its first appearance in the string")
+    Str_sub=input()
+    list_sub=Str.split(" ")
+    for i in range(len(list_sub)):
+        if Str_sub==list_sub[i]:
+            print(Str)
+            print(i)
+            break
+
+def freq_word():
+    list_str=Str.split(" ")
+    print("********Count of each wprd in string*********")
+    for i in range(len(list_str)):
+        print(list_str[i],list_str.count(list_str[i]))
+
+if __name__== '__main__':
+    print("*******Take Input******")
+    while(True):
+        print("1.To display word with the longest length")
+        print("2.To determine the frequency of occurence of particular character")
+        print("3.To check whether given string is palindrome or not")
+        print("4.To display index of first appearance of the substring")
+        print("5.To count the occurences of each word in a given string")
+        print("6.Enter choice")
+        choice = int(input())
+        if (choice == 1):
+            long_len()
+        if (choice == 2):
+            freq_char()
+        if (choice == 3):
+            str_pali()
+        if (choice == 4):
+            index_substr()
+        if (choice == 5):
+            freq_word()
+        if (choice == 6):
+            break
+        

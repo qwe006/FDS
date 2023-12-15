@@ -1,0 +1,79 @@
+def Average(arr):
+   n=len(arr)
+   sum=0
+   for i in range(0,n):
+     sum=arr[i]+sum
+   return sum/n  
+def highest(arr):
+  high=0
+  for i in range(0,len(arr)):
+    if high<arr[i]:
+      high=arr[i]
+  return high 
+def lowest(arr):
+  low=999
+  for i in range(0,len(arr)):
+    if arr[i]!=0 and low>arr[i]:
+      low=arr[i]
+  return low 
+def count(arr):
+  count=0
+  for i in range(0,len(arr)):
+    if arr[i]==0:
+     count=count+1
+  return count  
+def Frequency(arr):
+  i=0
+  high=0
+  marks=0
+  print("MARKS | FREQUENCY") 
+  for j in arr:
+    if(arr.index(j)==i):
+      print(j," | ",arr.count(j))
+      if arr.count(j)>high:
+        high=arr.count(j)
+        marks=j
+    i=i+1    
+  print("Marks with highest frequency:",marks)   
+  print("Frequency:",high)   
+def main():
+   Marks=[]
+   flag=0
+   while(flag==0): 
+    print("_____________________________________________") 
+    print("\t\tMENU") 
+    print("_____________________________________________")  
+    print("1.Enter Marks")
+    print("2.Average of Marks")
+    print("3.Highest and lowest")
+    print("4.Count of Absent")
+    print("5.Frequency")
+    print("6.Exit")
+    c=int(input("Enter your choice:"))
+    if(c==1):
+      Marks=[]  
+      size=int(input("How many student marks you want to enter:"))
+      for i in range(0,size):
+        a= str(input("Was the student present(y or n):"))
+        if(a=='y'):
+         n=float(input("Enter marks:"))
+         Marks.append(n)
+        else:
+          n=0
+          Marks.append(n)
+      print("Entered marks:",Marks)  
+    elif(c==2):
+      print("Average of all marks:",Average(Marks))
+    elif(c==3):
+      print("Highst marks:",highest(Marks))  
+      print("Lowest marks:",lowest(Marks)) 
+    elif(c==4):
+      print("Count of absent:",count(Marks)) 
+    elif(c==5):
+     Frequency(Marks)   
+    elif(c==6):
+      flag=1
+    else:
+       print("Invalid choice!")  
+   print("Program ended here!")   
+main()

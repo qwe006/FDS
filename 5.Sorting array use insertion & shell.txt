@@ -1,0 +1,120 @@
+def insertion(arr):
+    for i in range(1,len(arr)):
+      j=i
+      while j!=0 and arr[j]<arr[j-1]:
+         temp=arr[j]
+         arr[j]=arr[j-1]
+         arr[j-1]=temp
+         j=j-1
+def shell(arr):
+   n=len(arr)
+   interval=n//2
+   while(interval>0):
+      for i in range(interval,n):
+         temp=arr[i]
+         j=i
+         while j>=interval and arr[j-interval]>temp:
+            arr[j]=arr[j-interval]
+            j-=interval
+            arr[j]=temp
+      interval=interval//2     
+def main():
+   percentage=[]
+   flag=0
+   while(flag==0): 
+    print("_____________________________________________") 
+    print("\t\tMENU") 
+    print("_____________________________________________")  
+    print("1.Enter percentage")
+    print("2.Sort")
+    print("3.Top 5")
+    print("4.Exit")
+    c=int(input("Enter your choice:"))
+    if(c==1):
+      percentage=[]  
+      size=int(input("How many student percentage you want to enter:"))
+      for i in range(0,size):
+        n=float(input("Enter percentage:"))
+        percentage.append(n)
+      print("Entered percentage:",percentage)  
+    elif(c==2):
+      print("1.Insertion sort") 
+      print("2.Shell sort")   
+      ch=int(input("Enter your choice:"))
+      if(ch==1):
+         insertion(percentage)
+         print("After insertion sort:",percentage) 
+      elif(ch==2):
+         shell(percentage)
+         print("After shell sort:",percentage)
+      else:
+         print("Invalid choice!")  
+    elif(c==3):
+       print("Top 5")
+       for i in range(len(percentage)-1,len(percentage)-6,-1):
+          print(percentage[i])          
+    elif(c==4):
+      flag=1  
+    else:
+       print("Invalid choice!")  
+   print("Program ended here!")   
+main()
+x--------------x-------------------x---------------------x----------------------x---------------------x--------------------x--------------------x---------------x----------------x-------
+1.Enter percentage
+2.Sort
+3.Top 5
+4.Exit
+Enter your choice: 1
+how many student percentage you want to enter: 4
+Enter percentage: 34
+Enter percentage: 65
+Enter percentage: 76
+Enter percentage: 23
+Entered percentage: [34.0, 65.0, 76.0, 23.0]
+_____________________________________________
+		MENUE
+_____________________________________________
+1.Enter percentage
+2.Sort
+3.Top 5
+4.Exit
+Enter your choice: 2
+1.Insertion sort
+2.Shell sort
+Enter your choice: 1
+After insertion sort: [23.0, 34.0, 65.0, 76.0]
+_____________________________________________
+		MENUE
+_____________________________________________
+1.Enter percentage
+2.Sort
+3.Top 5
+4.Exit
+Enter your choice: 2
+1.Insertion sort
+2.Shell sort
+Enter your choice: 2
+After shell sort: [23.0, 34.0, 65.0, 76.0]
+_____________________________________________
+		MENUE
+_____________________________________________
+1.Enter percentage
+2.Sort
+3.Top 5
+4.Exit
+Enter your choice: 3
+Top 5
+76.0
+65.0
+34.0
+23.0
+76.0
+_____________________________________________
+		MENUE
+_____________________________________________
+1.Enter percentage
+2.Sort
+3.Top 5
+4.Exit
+Enter your choice: 4
+Program ended here!
